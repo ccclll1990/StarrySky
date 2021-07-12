@@ -103,11 +103,11 @@ public class MusicLibrary {
     }
 
     public void startMusicService() {
-        init(true);
+        init();
     }
 
     public void bindMusicService() {
-        init(false);
+        init();
     }
 
     public void stopService() {
@@ -117,18 +117,31 @@ public class MusicLibrary {
         mContext.stopService(intent);
     }
 
-    private void init(boolean isStartService) {
+    public void init() {
         Intent intent = new Intent(mContext, MusicService.class);
         intent.putExtra("isUseMediaPlayer", isUseMediaPlayer);
         intent.putExtra("isAutoPlayNext", isAutoPlayNext);
         intent.putExtra("isGiveUpAudioFocusManager", isGiveUpAudioFocusManager);
         intent.putExtra("notificationCreater", mNotificationCreater);
         intent.putExtra("cacheConfig", mCacheConfig);
-        if (isStartService) {
-            startService(intent);
-        }
+//        if (isStartService) {
+        startService(intent);
+//        }
         mContext.bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
     }
+
+//    public void init(boolean isStartService) {
+//        Intent intent = new Intent(mContext, MusicService.class);
+//        intent.putExtra("isUseMediaPlayer", isUseMediaPlayer);
+//        intent.putExtra("isAutoPlayNext", isAutoPlayNext);
+//        intent.putExtra("isGiveUpAudioFocusManager", isGiveUpAudioFocusManager);
+//        intent.putExtra("notificationCreater", mNotificationCreater);
+//        intent.putExtra("cacheConfig", mCacheConfig);
+////        if (isStartService) {
+//        startService(intent);
+////        }
+//        mContext.bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+//    }
 
     private void startService(Intent intent) {
         try {
