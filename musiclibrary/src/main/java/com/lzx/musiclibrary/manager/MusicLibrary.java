@@ -20,7 +20,7 @@ public class MusicLibrary {
 
     public static String ACTION_MUSICLIBRARY_INIT_FINISH = "ACTION_MUSICLIBRARY_INIT_FINISH";//服务初始化成功action
     private Context mContext;
-    private boolean isUseMediaPlayer;
+    private boolean isUseMediaPlayer = true;
     private boolean isAutoPlayNext;
     private boolean isGiveUpAudioFocusManager;
 
@@ -50,10 +50,10 @@ public class MusicLibrary {
             this.context = context.getApplicationContext();
         }
 
-//        public Builder setUseMediaPlayer(boolean isUseMediaPlayer) {
-//            this.isUseMediaPlayer = isUseMediaPlayer;
-//            return this;
-//        }
+        public Builder setUseMediaPlayer(boolean isUseMediaPlayer) {
+            this.isUseMediaPlayer = isUseMediaPlayer;
+            return this;
+        }
 
         public Builder setAutoPlayNext(boolean autoPlayNext) {
             isAutoPlayNext = autoPlayNext;
